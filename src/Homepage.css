@@ -24,7 +24,40 @@
     text-decoration: none;
  }
 
- .sidemenu {
+ .sidebar {
     max-width: 25%;
     background-color: rgb(245, 245, 245);
  }
+ .sidebar-subitem-text {
+   color: #c2185b;
+   font-size: 0.95rem;
+   font-style: oblique;
+   font-weight: bold;
+   margin-left: 20px;
+ }
+
+ .sidebar-item-text {
+    color: #1976d2;
+    font-size: 1rem;
+    font-style: oblique;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 10px;
+ }
+
+
+ .sidebar-item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+ 
+ .sidebar-item-content {
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   width: 100%;
+ }
+ 
