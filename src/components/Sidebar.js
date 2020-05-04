@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-// import ListItemText from "@material-ui/core/ListItemText";
+
 import Divider from "@material-ui/core/Divider";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
@@ -97,10 +97,4 @@ function MakeSidebarItem({
   );
 }
 
-const whiteNoteStyle = {
-  backgroundColor: "#ffffff",
-};
-const blackNoteStyle = {
-  backgroundColor: "#000000",
-};
 export default Sidebar;

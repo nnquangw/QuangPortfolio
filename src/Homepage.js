@@ -1,17 +1,28 @@
 import React, { Component } from "react";
 import Sidebar from "./components/Sidebar";
+import GeneralInformation from "./components/GeneralInformation";
+import Header from "./components/Header";
 import "./Homepage.css";
 
 import HomeIcon from "@material-ui/icons/Home";
 import BarChartIcon from '@material-ui/icons/BarChart';
-import StraightenIcon from '@material-ui/icons/Straighten'
+import StraightenIcon from '@material-ui/icons/Straighten';
+
 
 class Homepage extends Component {
   render() {
     return (
       <div className="Homepage">
-        <h1> Nguyen Nhat Quang</h1>
-        <Sidebar items={items} />
+        <Header/>
+        <div>
+          <Sidebar items={items} />
+          <GeneralInformation/>
+        </div>
+
+        <div>
+          
+        </div>
+        
       </div>
     );
   }
