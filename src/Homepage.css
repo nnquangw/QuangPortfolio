@@ -7,6 +7,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 h1 {
   color: rgb(100, 149, 237);
   display: block;
@@ -24,7 +35,6 @@ a {
 }
 
 .sidebar {
-  max-width: 25%;
   background-color: rgb(245, 245, 245);
 }
 .sidebar-subitem-text {

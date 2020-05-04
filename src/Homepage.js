@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Sidebar from "./components/Sidebar";
-import GeneralInformation from "./components/GeneralInformation";
+import Container from "./components/Container";
 import Header from "./components/Header";
 import "./Homepage.css";
 
@@ -12,17 +12,16 @@ import StraightenIcon from '@material-ui/icons/Straighten';
 class Homepage extends Component {
   render() {
     return (
-      <div className="Homepage">
+      <div>
         <Header/>
-        <div>
-          <Sidebar items={items} />
-          <GeneralInformation/>
+        <div className="row">
+          <div className="column">
+            <Sidebar items={items} />
+          </div>
+          <div className="column">
+              sss123
+          </div>
         </div>
-
-        <div>
-          
-        </div>
-        
       </div>
     );
   }
@@ -58,7 +57,7 @@ const items = [
     label: "Simulator",
     Icon: StraightenIcon,
     items: [
-      { name: "piano", label: "Virtual Piano" },
+      { name: "piano", label: "Virtual Piano", onClick},
     ],
   },
   "divider"
