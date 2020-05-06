@@ -35,8 +35,8 @@ function MakeSidebarItem({
   item,
   ...rest
 }) {
-  const [collapsed, setCollapsed] = React.useState(true);
-  const { label, items, Icon, onClick: onClickProp } = item;
+  const [collapsed, setCollapsed] = React.useState(false);
+  const { label, items, Icon } = item;
 
   function toggleCollapse() {
     setCollapsed((prevValue) => !prevValue);
@@ -44,9 +44,6 @@ function MakeSidebarItem({
   function onClick(e) {
     if (Array.isArray(items)) {
       toggleCollapse();
-    }
-    if (onClickProp) {
-      onClickProp(e, item);
     }
   }
 

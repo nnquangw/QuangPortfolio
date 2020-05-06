@@ -10,8 +10,14 @@ body {
 
 .column {
   float: left;
-  width: 25%;
+  width: auto;
   padding: 10px;
+  text-align: justify;
+}
+.column:after{
+  content: '';
+  width: 100%;
+  display: inline-block; 
 }
 .row:after {
   content: "";
@@ -70,5 +76,7 @@ a {
 }
 
 .general-information {
-  
+  color: #1976d2;
+  font-size: 0.98rem;
+
 }

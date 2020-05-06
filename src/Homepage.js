@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import Sidebar from "./components/Sidebar";
-import Container from "./components/Container";
+
 import Header from "./components/Header";
 import "./Homepage.css";
 
+import Container from '@material-ui/core/Container';
 import HomeIcon from "@material-ui/icons/Home";
 import BarChartIcon from '@material-ui/icons/BarChart';
 import StraightenIcon from '@material-ui/icons/Straighten';
 
+import GeneralInformation from "./components/GeneralInformation";
 
 class Homepage extends Component {
   render() {
@@ -18,18 +20,18 @@ class Homepage extends Component {
           <div className="column">
             <Sidebar items={items} />
           </div>
-          <div className="column">
-              sss123
-          </div>
+          <Container classes="column" component="div" maxwidth={false}>
+            {contents}
+          </Container>
         </div>
       </div>
     );
   }
 }
 function onClick(e, item) {
-  window.alert(JSON.stringify(item, null, 2));
+  contents = item;
 }
-
+var contents = <GeneralInformation/>;
 const items = [
   {
     name: "introduction",
