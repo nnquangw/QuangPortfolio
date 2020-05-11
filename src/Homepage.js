@@ -15,15 +15,17 @@ class Homepage extends Component {
   render() {
     return (
       <div>
-        <Header/>
-        <div className="row">
+        {/* <Header/> */}
+        <Sidebar items={items} />
+
+        {/* <div className="row">
           <div className="column">
-            <Sidebar items={items} />
+            
           </div>
           <Container classes="column" component="div" maxwidth={false}>
             {contents}
           </Container>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -43,7 +45,7 @@ const items = [
       { name: "objective", label: "Objective", onClick },
     ],
   },
-  "divider",
+
   {
     name: "visualization",
     label: "Algorithms Visualization",
@@ -53,7 +55,7 @@ const items = [
       { name: "searching", label: "Searching Algorithms", onClick },
     ],
   },
-  "divider",
+ 
   {
     name: "app",
     label: "Simulator",
@@ -62,6 +64,6 @@ const items = [
       { name: "piano", label: "Virtual Piano", onClick},
     ],
   },
-  "divider"
+
 ];
 export default Homepage;

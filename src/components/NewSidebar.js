@@ -56,17 +56,37 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Sidebar({ items }) {
   const classes = useStyles();
+  let initArray = [];
 
-  const [collapsed, setCollapsed] = React.useState({});
+  function setAll(a, v, length) {
+    var i,
+      n = length;
+    for (i = 0; i < n; ++i) {
+      a.push(v);
+    }
+  }
+  setAll(initArray, <ExpandMore/>, items.length);
+  const [collapsed0, setCollapsed0] = React.useState(false);
+  const [collapsed1, setCollapsed1] = React.useState(false);
+  const [collapsed2, setCollapsed2] = React.useState(false);
+
   const [selectedIndex, setSelectedIndex] = React.useState(null);
 
-  function toggleCollapse(name) {
-    setCollapsed({...collapsed, [name]: !collapsed[name]});
+  function toggleCollapse(index) {
+    if (index === 0) {
+      setCollapsed0((collapsed) => !collapsed);
+    } else {
+      if (index === 1) {
+        setCollapsed1((collapsed) => !collapsed);
+      } else {
+        setCollapsed2((collapsed) => !collapsed);
+      }
+    }   
   }
 
-  const handleListItemClick = (event, index, name) => {
+  const handleListItemClick = (event, index) => {
     if (Array.isArray(items)) {
-      toggleCollapse(name);
+      toggleCollapse(index);
     } else {
       if (selectedIndex === null) {
         setSelectedIndex(index);
@@ -75,7 +95,6 @@ export default function Sidebar({ items }) {
       }
     }
   };
-  console.log(collapsed);
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -105,13 +124,19 @@ export default function Sidebar({ items }) {
                     <ListItem
                       button
                       key={`${sidebarItem.name}${index}`}
-                      onClick={(event) => handleListItemClick(event, index, sidebarItem.name)}
+                      onClick={(event) => handleListItemClick(event, index)}
                     >
                       <ListItemText
                         classes={{ primary: classes.sidebarItemText }}
                         primary={sidebarItem.label}
                       />
-                      {collapsed[sidebarItem.name] ? <ExpandLess/> : <ExpandMore/>}
+
+                      {(collapsed0 && (index === 0)) ? <ExpandLess /> : (
+                        (collapsed1 && (index === 1)) ? <ExpandLess /> : (
+                          (collapsed2 && (index === 2)) ? <ExpandLess /> : <ExpandMore />
+                        )
+                      )}
+
                     </ListItem>
                   </div>
                 ) : null}
