@@ -36,32 +36,35 @@ function onClick(e, item) {
 var contents = <GeneralInformation/>;
 const items = [
   {
+    id: "00",
     name: "introduction",
     label: "Introduction",
     Icon: HomeIcon,
     items: [
-      { name: "general", label: "General Information", onClick },
-      { name: "education", label: "Education", onClick },
-      { name: "objective", label: "Objective", onClick },
+      { id: "01", name: "general", label: "General Information", onClick },
+      { id: "02", name: "education", label: "Education", onClick },
+      { id: "03", name: "objective", label: "Objective", onClick },
     ],
   },
 
   {
+    id: "10",
     name: "visualization",
     label: "Algorithms Visualization",
     Icon: BarChartIcon,
     items: [
-      { name: "sorting", label: "Sorting Algorithms", onClick },
-      { name: "searching", label: "Searching Algorithms", onClick },
+      { id: "11", name: "sorting", label: "Sorting Algorithms", onClick },
+      { id: "12", name: "searching", label: "Searching Algorithms", onClick },
     ],
   },
  
   {
+    id: "20",
     name: "app",
     label: "Simulator",
     Icon: StraightenIcon,
     items: [
-      { name: "piano", label: "Virtual Piano", onClick},
+      { id: "21", name: "piano", label: "Virtual Piano", onClick},
     ],
   },
 
