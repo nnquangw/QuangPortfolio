@@ -9,10 +9,12 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+
+import Containers from "./Containers";
+
 
 const drawerWidth = "23%";
 
@@ -38,10 +40,14 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerContainer: {
     overflow: "auto",
+    background: "linear-gradient(to right, #e3f2fd 50%, #fce4ec 100%)",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  selectedItem: {
+    background: "linear-gradient(to right, #e3f2fd 50%, #c2185b 100%)",
   },
   sidebarItemText: {
     color: "#1976d2",
@@ -60,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Sidebar({ items }) {
+export default function Homepage({ items }) {
   const classes = useStyles();
 
   const [collapsed, setCollapsed] = React.useState({});
@@ -75,9 +81,10 @@ export default function Sidebar({ items }) {
   };
 
   const [selectedIndex, setSelectedIndex] = React.useState(null);
-
-  const handleSubItemClick = (event, id) => {
+  const [selectedContainer, setContainer] = React.useState("Welcome");
+  const handleSubItemClick = (event, id, name) => {
     setSelectedIndex(id);
+    setContainer(name);
   };
   return (
     <div className={classes.root}>
@@ -102,7 +109,7 @@ export default function Sidebar({ items }) {
             return (
               <List key={sidebarItem.id}>
                 {sidebarItem === "divider" ? (
-                  <Divider style={{ margin: "6px 0" }} />
+                  <Divider style={{ margin: "2px 0" }} />
                 ) : sidebarItem.items != null ? (
                   <div key={sidebarItem.id}>
                     <ListItem
@@ -116,6 +123,7 @@ export default function Sidebar({ items }) {
                         )
                       }
                     >
+                      <sidebarItem.Icon />
                       <ListItemText
                         classes={{ primary: classes.sidebarItemText }}
                         primary={sidebarItem.label}
@@ -130,7 +138,7 @@ export default function Sidebar({ items }) {
                       key={sidebarItem.id}
                       collapsed={collapsed[sidebarItem.name]}
                       items={sidebarItem.items}
-                      style={classes.sidebarSubitemText}
+                      style={classes}
                       click={handleSubItemClick}
                       select={selectedIndex}
                     />
@@ -143,13 +151,13 @@ export default function Sidebar({ items }) {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <Typography paragraph>Alo alo.</Typography>
+        <Containers selectedContainer={selectedContainer}/>
       </main>
     </div>
   );
 }
 
-function CollapseItem({ key, collapsed, items, style, click, select}) {
+function CollapseItem({ key, collapsed, items, style, click, select }) {
   return (
     <Collapse key={key} in={!collapsed} timeout="auto" unmountOnExit>
       <List disablePadding>
@@ -158,11 +166,12 @@ function CollapseItem({ key, collapsed, items, style, click, select}) {
             <ListItem
               button
               key={subItem.id}
-              onClick={(event) => click(event, subItem.id)}
+              onClick={(event) => click(event, subItem.id, subItem.name)}
               selected={select === subItem.id}
+              classes={{selected: style.selectedItem}}
             >
               <ListItemText
-                classes={{ primary: style }}
+                classes={{ primary: style.sidebarSubitemText }}
                 primary={subItem.label}
               />
             </ListItem>
