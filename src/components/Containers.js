@@ -1,10 +1,20 @@
 import React from "react";
-import Welcome from "./contents/Welcome";
-import GeneralInformation from "./contents/GeneralInformation";
 
+import Welcome from "./contents/Welcome";
+import AboutMe from "./contents/AboutMe";
+import VirtualPiano from "./contents/VirtualPiano";
+import Sorting from "./contents/Sorting";
+
+const func = {
+  "Welcome": <Welcome/>,
+  "AboutMe": <AboutMe/>,
+  "VirtualPiano": <VirtualPiano/>,
+  "Sorting": <Sorting/>,
+};
 export default function Containers({ selectedContainer }) {
-    if (selectedContainer === "Welcome") {
-        return <Welcome />
-    }
-    return (<div>sdsadas</div>);
+  if (func[selectedContainer]) {
+    return func[selectedContainer];
+  } else {
+      return <div>sdsadas</div>;
+  }
 }

@@ -25,14 +25,10 @@ body {
   clear: both;
 }
 h1 {
-  color: rgb(100, 149, 237);
+  color: #c2185b;
   display: block;
   text-align: center;
-  font-size: 3em;
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
-  margin-left: 0;
-  margin-right: 0;
+  font-size: 2.4em;
   font-weight: bold;
 }
 a {

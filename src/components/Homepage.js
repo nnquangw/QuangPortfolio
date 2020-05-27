@@ -1,11 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -14,57 +14,13 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 
 import Containers from "./Containers";
-
-
-const drawerWidth = "23%";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    background: "linear-gradient(45deg, #c2185b 30%, #1976d2 90%)",
-    border: 0,
-    borderRadius: 3,
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    color: "white",
-    padding: "0 30px",
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerContainer: {
-    overflow: "auto",
-    background: "linear-gradient(to right, #e3f2fd 50%, #fce4ec 100%)",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-  selectedItem: {
-    background: "linear-gradient(to right, #e3f2fd 50%, #c2185b 100%)",
-  },
-  sidebarItemText: {
-    color: "#1976d2",
-    fontSize: "1rem",
-    fontStyle: "oblique",
-    fontWeight: "bold",
-    letterSpacing: "1px",
-    marginLeft: "10px",
-  },
-  sidebarSubitemText: {
-    color: "#c2185b",
-    fontSize: "0.95rem",
-    fontStyle: "oblique",
-    fontWeight: "bold",
-    marginLeft: "20px",
-  },
-}));
+import Contact from "./Contact";
+import Welcome from "./contents/Welcome";
+import AboutMe from "./contents/AboutMe";
+import Sorting from "./contents/Sorting";
+import Searching from "./contents/Searching";
+import VirtualPiano from "./contents/VirtualPiano";
+import { useStyles } from "./Styles";
 
 export default function Homepage({ items }) {
   const classes = useStyles();
@@ -81,21 +37,70 @@ export default function Homepage({ items }) {
   };
 
   const [selectedIndex, setSelectedIndex] = React.useState(null);
-  const [selectedContainer, setContainer] = React.useState("Welcome");
+  const [selectedContainer, setContainer] = React.useState(0);
   const handleSubItemClick = (event, id, name) => {
     setSelectedIndex(id);
-    setContainer(name);
+    setContainer(getIndex[name]);
   };
+  const getIndex = {
+    "Welcome": 0,
+    "AboutMe": 1,
+    "Sorting": 2,
+    "Searching": 3,
+    "VirtualPiano": 4,
+  };
+  const idFunc = {
+    0: {id: null, func: <Welcome/>},
+    1: {id: "01", func: <AboutMe/>},
+    2: {id: "11", func: <Sorting/>},
+    3: {id: "12", func: <Searching/>},
+    4: {id: "21", func: <VirtualPiano/>},
+  };
+  const handleScrollContainer = (event) => {
+    if (event.deltaY > 0) {
+      if(selectedContainer === Object.keys(idFunc).length - 1){
+        setSelectedIndex(idFunc[0].id);
+        setContainer(0);
+      } else {
+        setSelectedIndex(idFunc[selectedContainer+1].id);
+        setContainer(selectedContainer+1);
+      } 
+    } else if (event.deltaY < 0) {
+      if(selectedContainer === 0){
+        setSelectedIndex(idFunc[Object.keys(idFunc).length - 1].id);
+        setContainer(Object.keys(idFunc).length - 1);
+      } else {
+        setSelectedIndex(idFunc[selectedContainer-1].id);
+        setContainer(selectedContainer-1);
+      } 
+    }
+    
+  };
+  const dat = new Date().toDateString();
+  console.log(selectedContainer);
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" noWrap>
-            Nguyen Nhat Quang
-          </Typography>
+          <Button
+            className={classes.appBarButton}
+            onClick={(event) => {
+              handleSubItemClick(event, null, "Welcome");
+            }}
+          >
+            {selectedContainer === 1 ? (
+              <span>Welcome</span>
+            ) : (
+              <span>Nguyen Nhat Quang</span>
+            )}
+          </Button>
+          <Contact />
+          {dat}
         </Toolbar>
       </AppBar>
+
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -109,7 +114,7 @@ export default function Homepage({ items }) {
             return (
               <List key={sidebarItem.id}>
                 {sidebarItem === "divider" ? (
-                  <Divider style={{ margin: "2px 0" }} />
+                  <Divider style={{ margin: "7.5px 0" }} />
                 ) : sidebarItem.items != null ? (
                   <div key={sidebarItem.id}>
                     <ListItem
@@ -123,15 +128,19 @@ export default function Homepage({ items }) {
                         )
                       }
                     >
-                      <sidebarItem.Icon />
+                      <sidebarItem.Icon style={{ fontSize: "0.85rem" }}/>
                       <ListItemText
                         classes={{ primary: classes.sidebarItemText }}
                         primary={sidebarItem.label}
                       />
                       {collapsed[sidebarItem.name] ? (
-                        <ExpandLess />
+                        <ExpandLess
+                          style={{ fontSize: "0.85rem" }}
+                        />
                       ) : (
-                        <ExpandMore />
+                        <ExpandMore
+                          style={{ fontSize: "0.85rem" }}
+                        />
                       )}
                     </ListItem>
                     <CollapseItem
@@ -149,9 +158,10 @@ export default function Homepage({ items }) {
           })}
         </div>
       </Drawer>
-      <main className={classes.content}>
+      <main className={classes.content} onWheel={(event) => handleScrollContainer(event)}>
         <Toolbar />
-        <Containers selectedContainer={selectedContainer}/>
+        {/* <Containers selectedContainer={selectedContainer}/> */}
+        {idFunc[selectedContainer] ? idFunc[selectedContainer].func : <div>Working in progress...</div>}
       </main>
     </div>
   );
@@ -168,7 +178,7 @@ function CollapseItem({ key, collapsed, items, style, click, select }) {
               key={subItem.id}
               onClick={(event) => click(event, subItem.id, subItem.name)}
               selected={select === subItem.id}
-              classes={{selected: style.selectedItem}}
+              classes={{ selected: style.selectedItem }}
             >
               <ListItemText
                 classes={{ primary: style.sidebarSubitemText }}

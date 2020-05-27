@@ -3,7 +3,7 @@ import Homepage from "./components/Homepage";
 
 import "./App.css";
 
-import HomeIcon from "@material-ui/icons/Home";
+import PersonIcon from "@material-ui/icons/Person";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import StraightenIcon from "@material-ui/icons/Straighten";
 
@@ -22,32 +22,31 @@ const items = [
     id: "00",
     name: "Introduction",
     label: "Introduction",
-    Icon: HomeIcon,
-    items: [
-      { id: "01", name: "GeneralInformation", label: "General Information" },
-      { id: "02", name: "Education", label: "Education" },
-      { id: "03", name: "Objective", label: "Objective" },
-    ],
+    Icon: PersonIcon,
+    items: [{ id: "01", name: "AboutMe", label: "About Me" }],
   },
   "divider",
   {
     id: "10",
-    name: "AlgorithmsVisualization",
-    label: "Algorithms Visualization",
+    name: "Visualizer",
+    label: "Visualizer",
     Icon: BarChartIcon,
     items: [
-      { id: "11", name: "SortingAlgorithms", label: "Sorting Algorithms" },
-      { id: "12", name: "SearchingAlgorithms", label: "Searching Algorithms" },
+      { id: "11", name: "Sorting", label: "Sorting" },
+      { id: "12", name: "Searching", label: "Searching" },
     ],
   },
   "divider",
   {
     id: "20",
-    name: "Simlulator",
-    label: "Simulator",
+    name: "MusicApps",
+    label: "Music Apps",
     Icon: StraightenIcon,
-    items: [{ id: "21", name: "VirtualPiano", label: "Virtual Piano" }],
+    items: [
+      { id: "21", name: "VirtualPiano", label: "Virtual Piano" },
+      { id: "22", name: "ToneMemorize", label: "Tone Memorize" },
+    ],
   },
-
+  "divider",
 ];
 export default App;
