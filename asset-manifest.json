@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/cvweb/static/css/main.46e8b82f.chunk.css",
+    "main.js": "/cvweb/static/js/main.20b6f694.chunk.js",
+    "main.js.map": "/cvweb/static/js/main.20b6f694.chunk.js.map",
+    "runtime-main.js": "/cvweb/static/js/runtime-main.8cfecf90.js",
+    "runtime-main.js.map": "/cvweb/static/js/runtime-main.8cfecf90.js.map",
+    "static/css/2.1e78366a.chunk.css": "/cvweb/static/css/2.1e78366a.chunk.css",
+    "static/js/2.5e6bf3e0.chunk.js": "/cvweb/static/js/2.5e6bf3e0.chunk.js",
+    "static/js/2.5e6bf3e0.chunk.js.map": "/cvweb/static/js/2.5e6bf3e0.chunk.js.map",
+    "index.html": "/cvweb/index.html",
+    "precache-manifest.7a1e46836267219af4812279aeaa6bde.js": "/cvweb/precache-manifest.7a1e46836267219af4812279aeaa6bde.js",
+    "service-worker.js": "/cvweb/service-worker.js",
+    "static/css/2.1e78366a.chunk.css.map": "/cvweb/static/css/2.1e78366a.chunk.css.map",
+    "static/css/main.46e8b82f.chunk.css.map": "/cvweb/static/css/main.46e8b82f.chunk.css.map",
+    "static/js/2.5e6bf3e0.chunk.js.LICENSE.txt": "/cvweb/static/js/2.5e6bf3e0.chunk.js.LICENSE.txt",
+    "static/media/NguyenNhatQuang-PHOTO.jpg": "/cvweb/static/media/NguyenNhatQuang-PHOTO.72af214c.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8cfecf90.js",
+    "static/css/2.1e78366a.chunk.css",
+    "static/js/2.5e6bf3e0.chunk.js",
+    "static/css/main.46e8b82f.chunk.css",
+    "static/js/main.20b6f694.chunk.js"
+  ]
+}
