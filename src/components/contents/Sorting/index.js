@@ -8,13 +8,12 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
 import { Chart } from "@devexpress/dx-react-chart-material-ui";
-import { BarSeries } from "@devexpress/dx-react-chart";
-import { Animation } from "@devexpress/dx-react-chart";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 // import selectionSort from "./algorithms/selectionSort";
 import Information from "./Information";
 import Legends from "./Legends";
+import Bars from "./Bars";
 
 var delayTime = 1;
 const LightTooltip = withStyles((theme) => ({
@@ -31,23 +30,25 @@ export default function Sorting() {
 
   const [len, setLength] = React.useState(30); // Array Length
   const [alg, setAlgorithm] = React.useState("selection"); // Algorithm
-  const [data, setData] = React.useState(GenerateData(RandomArray(30))); // Generate Data
+  const [data, setData] = React.useState(GenerateData(RandomArray(30), "selection")); // Generate Data
   const [unSort, setUnSort] = React.useState(deepCopy(data)); // Generate Data
   const [state, setState] = React.useState(0); // Start sorting
   const [count, setCount] = React.useState({ comparison: 0, swap: 0 }); // count
   const [sortCase, setSortCase] = React.useState("average"); // case
+  const [barSet, setBarSet] = React.useState(Bars("selection", 30)); // case
 
   const handleChangeLen = (event) => {
     if (state !== 1) {
       setLength(event.target.value);
       let tmp = RandomArray(event.target.value);
-      setData(GenerateData(tmp));
-      setUnSort(deepCopy(GenerateData(tmp)));
+      setData(GenerateData(tmp, alg));
+      setUnSort(deepCopy(GenerateData(tmp, alg)));
       setState(0);
       setCount({ comparison: 0, swap: 0 });
+      setBarSet(Bars(alg, event.target.value));
     }
   };
-  const handleGenerateArray = (event) => {
+  const handleGenerateArray = () => {
     if (state !== 1) {
       let tmp;
       switch (sortCase) {
@@ -63,8 +64,8 @@ export default function Sorting() {
         default:
           break;
       }
-      setData(GenerateData(tmp));
-      setUnSort(deepCopy(GenerateData(tmp)));
+      setData(GenerateData(tmp, alg));
+      setUnSort(deepCopy(GenerateData(tmp, alg)));
       setState(0);
       setCount({ comparison: 0, swap: 0 });
     }
@@ -72,13 +73,14 @@ export default function Sorting() {
   // Set Algorithm
   const handleChangeAlg = (event) => {
     setAlgorithm(event.target.value);
+    setBarSet(Bars(event.target.value, len));
   };
   // Set Sort Case
   const handleChangeSortCase = (event) => {
     setSortCase(event.target.value);
   };
   // Start sorting
-  const handleState = (event) => {
+  const handleState = () => {
     switch (state) {
       case 0:
         delayTime = 1;
@@ -233,36 +235,7 @@ export default function Sorting() {
           <Legends alg={alg} />
         </Paper>
         <Chart data={data} className={classes.chart} height={430}>
-          <BarSeries
-            valueField="value"
-            argumentField="index"
-            barWidth={1 - 0.001 * data.length}
-            color="#9e9e9e"
-          />
-          <BarSeries
-            valueField="idx"
-            argumentField="index"
-            barWidth={1 - 0.001 * data.length}
-            color="#5d4037"
-          />
-          <BarSeries
-            valueField="min"
-            argumentField="index"
-            barWidth={1 - 0.001 * data.length}
-            color="#7b1fa2"
-          />
-          <BarSeries
-            valueField="swap"
-            argumentField="index"
-            barWidth={1 - 0.001 * data.length}
-            color="#c2185b"
-          />
-          <BarSeries
-            valueField="sorted"
-            argumentField="index"
-            barWidth={1 - 0.001 * data.length}
-            color="#afb42b"
-          />
+          {barSet}
           {/* <Animation/> */}
         </Chart>
       </Paper>
@@ -300,18 +273,49 @@ function DescendingArray(n) {
   return arr;
 }
 
-function GenerateData(arr) {
+function GenerateData(arr, alg) {
   let data = [];
-  for (let i = 0; i < arr.length; i++) {
-    data.push({
-      index: i.toString(),
-      value: arr[i],
-      idx: 0,
-      swap: 0,
-      sorted: 0,
-      min: 0,
-    });
+  switch (alg) {
+    case "bubble":
+      for (let i = 0; i < arr.length; i++) {
+        data.push({
+          index: i.toString(),
+          value: arr[i],
+          idx: 0,
+          swap: 0,
+          sorted: 0,
+        });
+      }
+      break;
+    case "quick":
+      for (let i = 0; i < arr.length; i++) {
+        data.push({
+          index: i.toString(),
+          value: arr[i],
+          idx: 0,
+          swap: 0,
+          sorted: 0,
+          left: 0,
+          right: 0,
+        });
+      }
+      break;
+    case "selection":
+      for (let i = 0; i < arr.length; i++) {
+        data.push({
+          index: i.toString(),
+          value: arr[i],
+          idx: 0,
+          swap: 0,
+          sorted: 0,
+          min: 0,
+        });
+      }
+      break;
+    default:
+      break;
   }
+
   return data;
 }
 
@@ -423,58 +427,51 @@ async function bubbleSort(data, setData, setCount, setState, optimize) {
   setState(2);
 }
 
-function partition(data, setData, count,  low, high) {
-  let pivot = data[high];
-  let i = low - 1;
-  let comparison = count["comparison"];
-  let swap = count["swap"];
-  for (let j = low; j <= high - 1; j++) {
-    comparison = comparison + 1;
-    // if(delayTime === 1){
-    //   data[j].idx = data[j].value;
-    //   setData([...data]);
-    //   // setCount({comparison, swap});
-    //   await delay(0);
-    //   data[j].idx = 0;
-    // }
-    if (data[j].value < pivot.value) {
-      swap = swap + 1;
-      i++;
-      [data[i].value, data[j].value] = [data[j].value, data[i].value];
-      // if(delayTime === 1){
-      //   [data[i].swap, data[j].swap] = [data[i].value, data[j].value];
-      //   setData([...data]);
-      //   // setCount({comparison, swap});
-      //   await delay(0);
-      //   [data[i].swap, data[j].swap] = [0, 0];
-      // }
-    }
-  }
-  swap=swap+1;
-  [data[i + 1].value, data[high].value] = [data[high].value, data[i + 1].value];
-  // if(delayTime === 1){
-  //   [data[i+1].swap, data[high].swap] = [data[i+1].value, data[high].value];
-  //   setData([...data]);
-  //   // setCount({comparison, swap});
-  //   await delay(0);
-  //   [data[i+1].swap, data[high].swap] = [0, 0];
-  // }
-  setData([...data]);
-  
-  return [i + 1, {comparison, swap}];
-}
-function quickSort(data, setData, count, setCount, setState, low, high) {
+async function quickSort(data, setData, count, setCount, setState, low, high) {
   if (low < high) {
-    let pi;
-    [pi, count] = partition(data, setData, count, low, high);
-    setCount(count);
-    
+    console.log(low, high);
+    let pivot = data[high];
+    let i = low - 1;
+    let comparison = count["comparison"];
+    let swap = count["swap"];
+    for (let j = low; j <= high - 1; j++) {
+      comparison = comparison + 1;
+      if (delayTime === 1) {
+        data[j].idx = data[j].value;
+        setData([...data]);
+        setCount({ comparison, swap });
+        await delay(0);
+        data[j].idx = 0;
+      }
+      if (data[j].value < pivot.value) {
+        swap = swap + 1;
+        i++;
+        [data[i].value, data[j].value] = [data[j].value, data[i].value];
+        if (delayTime === 1) {
+          [data[i].swap, data[j].swap] = [data[i].value, data[j].value];
+          setData([...data]);
+          setCount({ comparison, swap });
+          await delay(0);
+          [data[i].swap, data[j].swap] = [0, 0];
+        }
+      }
+    }
+    swap = swap + 1;
+    [data[i + 1].value, data[high].value] = [
+      data[high].value,
+      data[i + 1].value,
+    ];
+    setData([...data]);
+    setCount({ comparison, swap });
+    await delay(10);
+    let pi = i + 1;
+    // [pi, count] = partition(data, setData, count, setCount, low, high);
+    // setCount(count);
+    // await delay(100);
     quickSort(data, setData, count, setCount, setState, low, pi - 1);
     quickSort(data, setData, count, setCount, setState, pi + 1, high);
-
-  } else {
-    if (low === 0 && high === data.length - 1) {
-      setState(2);
-    }
+  }
+  if (low === 0 && high === data.length - 1) {
+    setState(2);
   }
 }

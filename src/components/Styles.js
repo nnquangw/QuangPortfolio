@@ -43,6 +43,22 @@ export const useStyles = makeStyles((theme) => ({
     background: "#7b1fa2",
     border: "1px solid rgba(0, 0, 0, .2)",
   },
+  boxLeft: {
+    margin: "5px",
+    float: "left", 
+    width: "15px",
+    height: "15px",
+    background: "#f57c00",
+    border: "1px solid rgba(0, 0, 0, .2)",
+  },
+  boxRight: {
+    margin: "5px",
+    float: "left", 
+    width: "15px",
+    height: "15px",
+    background: "#0097a7",
+    border: "1px solid rgba(0, 0, 0, .2)",
+  },
   boxSwap: {
     margin: "5px",
     float: "left", 

@@ -41,6 +41,10 @@ export default function Legends({ alg }) {
           <div className={classes.boxSwap}></div> Swap elements
           <br />
           <div className={classes.boxSorted}></div> Sorted elements
+          <br />
+          <div className={classes.boxLeft}></div> Left of partition
+          <br />
+          <div className={classes.boxRight}></div> Right of partition
         </>
       ),
   };
