@@ -13,10 +13,9 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 
-import Containers from "./Containers";
 import Contact from "./Contact";
-import Welcome from "./contents/Welcome";
-import AboutMe from "./contents/AboutMe";
+import Welcome from "./Welcome";
+import AboutMe from "./AboutMe";
 import Sorting from "./contents/Sorting";
 import Searching from "./contents/Searching";
 import VirtualPiano from "./contents/VirtualPiano";
@@ -76,9 +75,10 @@ export default function Homepage({ items }) {
     }
     
   };
-  const dat = new Date().toDateString();
-  console.log(selectedContainer);
-
+  const date = new Date().toDateString();
+  const randomKey1 = Math.random().toString().substr(2, 3);
+  const randomKey2 = Math.random().toString().substr(2, 4);
+  const randomKey3 = Math.random().toString().substr(2, 5);
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -97,7 +97,7 @@ export default function Homepage({ items }) {
             )}
           </Button>
           <Contact />
-          {dat}
+          {date}
         </Toolbar>
       </AppBar>
 
@@ -112,14 +112,14 @@ export default function Homepage({ items }) {
         <div className={classes.drawerContainer}>
           {items.map((sidebarItem) => {
             return (
-              <List key={sidebarItem.id}>
-                {sidebarItem === "divider" ? (
+              <List key={sidebarItem.id+randomKey1}>
+                {sidebarItem.name === "divider" ? (
                   <Divider style={{ margin: "7.5px 0" }} />
                 ) : sidebarItem.items != null ? (
-                  <div key={sidebarItem.id}>
+                  <div>
                     <ListItem
                       button
-                      key={sidebarItem.id}
+                      key={sidebarItem.id+randomKey2}
                       onClick={(event) =>
                         handleListItemClick(
                           event,
@@ -144,7 +144,7 @@ export default function Homepage({ items }) {
                       )}
                     </ListItem>
                     <CollapseItem
-                      key={sidebarItem.id}
+                      subkey={randomKey3}
                       collapsed={collapsed[sidebarItem.name]}
                       items={sidebarItem.items}
                       style={classes}
@@ -167,15 +167,15 @@ export default function Homepage({ items }) {
   );
 }
 
-function CollapseItem({ key, collapsed, items, style, click, select }) {
+function CollapseItem({ subkey, collapsed, items, style, click, select }) {
   return (
-    <Collapse key={key} in={!collapsed} timeout="auto" unmountOnExit>
+    <Collapse in={!collapsed} timeout="auto" unmountOnExit>
       <List disablePadding>
         {items.map((subItem) => {
           return (
             <ListItem
               button
-              key={subItem.id}
+              key={subItem.id + subkey}
               onClick={(event) => click(event, subItem.id, subItem.name)}
               selected={select === subItem.id}
               classes={{ selected: style.selectedItem }}

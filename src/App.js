@@ -25,7 +25,7 @@ const items = [
     Icon: PersonIcon,
     items: [{ id: "01", name: "AboutMe", label: "About Me" }],
   },
-  "divider",
+  { id: "d0", name: "divider" },
   {
     id: "10",
     name: "Visualizer",
@@ -36,7 +36,7 @@ const items = [
       { id: "12", name: "Searching", label: "Searching" },
     ],
   },
-  "divider",
+  { id: "d1", name: "divider" },
   {
     id: "20",
     name: "MusicApps",
@@ -47,6 +47,6 @@ const items = [
       { id: "22", name: "ToneMemorize", label: "Tone Memorize" },
     ],
   },
-  "divider",
+  { id: "d2", name: "divider" },
 ];
 export default App;

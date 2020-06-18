@@ -1,14 +1,13 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
-import { useStyles } from "./../Styles";
-import photo from "../../images/NguyenNhatQuang-PHOTO.jpg";
+import { useStyles } from "./Styles";
+import photo from "../images/NguyenNhatQuang-PHOTO.jpg";
 
 import Paper from "@material-ui/core/Paper";
 
 export default function AboutMe() {
   const classes = useStyles();
   return (
-    <div className={classes.aboutMe}>
+    <div className={classes.container}>
       <Paper className={classes.paper} elevation={3}>
         <h1>Nguyen Nhat Quang</h1>
         <p className={classes.pBorder}>

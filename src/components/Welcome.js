@@ -1,5 +1,5 @@
 import React from "react";
-import { useStyles } from "./../Styles";
+import { useStyles } from "./Styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 export default function Welcome() {
