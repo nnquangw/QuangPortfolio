@@ -78,14 +78,16 @@ export const useStyles = makeStyles((theme) => ({
   button: {
     background: "#fff",
     color: "#039be5",
-    fontWeight: "700",
+    fontWeight: "bold",
     position:"relative",
+    fontSize:"0.8rem",
   },
   buttonStart: {
     background: "#fff ",
     color: "#c2185b",
-    fontWeight: "700",
+    fontWeight: "bold",
     position:"relative",
+    fontSize:"0.8rem",
   },
   contact: {
     float: "right",
@@ -94,7 +96,7 @@ export const useStyles = makeStyles((theme) => ({
   container: {
     background: "linear-gradient(to top, #c2185b, #1976d2, #fff, #fff)",
     backgroundSize: "250% 250%",
-    animation: `$myabout 15s infinite`,
+    animation: `$myAbout 15s infinite`,
     fontSize: "1rem",
     fontWeight: "bold",
     letterSpacing: "1px",
@@ -107,8 +109,6 @@ export const useStyles = makeStyles((theme) => ({
   chart: {
     background: "linear-gradient(to top, #f5f5f5, #fff, #fff)",
     borderRadius: 10,
-    position: "relative",
-    top: "11%",
   },
   tooltipWidth: {
     maxWidth: 500,
@@ -131,8 +131,8 @@ export const useStyles = makeStyles((theme) => ({
     position:"relative",
   },
   info: {
-    fontSize: "medium",
-    color: "#388e3c",
+    fontSize: "large",
+    color: "#00b8d4",
   },
   imgStyle: {
     float: "right",
@@ -174,7 +174,7 @@ export const useStyles = makeStyles((theme) => ({
   paperCount: {
     position: "relative",
     float: "right",
-    fontSize: "0.8rem",
+    fontSize: "0.75rem",
     color: "#388e3c",
     borderStyle: "double",
     borderRadius: 3,
@@ -183,11 +183,13 @@ export const useStyles = makeStyles((theme) => ({
   paperLegends: {
     display: "inline-flex",
     borderStyle: "solid",
+    borderWidth: "1px",
     borderRadius: 3,
     borderColor: "#9e9e9e",
     fontSize: "0.7rem",
     boxShadow: "0 0 0 0 ",
     alignItems: "center",
+    padding:"2px",
   },
   selectedItem: {
     background: "linear-gradient(to right, #fff 95%, #c2185b 100%)",
@@ -225,19 +227,19 @@ export const useStyles = makeStyles((theme) => ({
     height: "calc(100vh - 64px)",
     fontWeight: "bold",
     textAlign: "center",
-    animation: `$mywelcome 10s infinite`,
+    animation: `$myWelcome 10s infinite`,
     width: "100%",
   },
   welcomeList: {
     padding: "5% 0 0 0",
     listStyleType: "none",
-    animation: `$changecolor 10s infinite`,
+    animation: `$changeColor 10s infinite`,
   },
   scroll: {
     padding: "20% 0 0 0",
-    animation: `$fadein 5s, $changecolor2 10s infinite`,
+    animation: `$fadeIn 5s, $changeColor2 10s infinite`,
   },
-  "@keyframes mywelcome": {
+  "@keyframes myWelcome": {
     "0%": {
       backgroundPosition: "0% 50%",
     },
@@ -248,7 +250,7 @@ export const useStyles = makeStyles((theme) => ({
       backgroundPosition: "0% 50%",
     },
   },
-  "@keyframes changecolor": {
+  "@keyframes changeColor": {
     "0%": {
       color: "#c2185b",
     },
@@ -259,7 +261,7 @@ export const useStyles = makeStyles((theme) => ({
       color: "#c2185b",
     },
   },
-  "@keyframes changecolor2": {
+  "@keyframes changeColor2": {
     "0%": {
       color: "#1976d2",
     },
@@ -270,11 +272,11 @@ export const useStyles = makeStyles((theme) => ({
       color: "#1976d2",
     },
   },
-  "@keyframes fadein": {
+  "@keyframes fadeIn": {
     from: { opacity: 0 },
     to: { opacity: 1 },
   },
-  "@keyframes myabout": {
+  "@keyframes myAbout": {
     "0%": {
       backgroundPosition: "0% 0%",
     },
