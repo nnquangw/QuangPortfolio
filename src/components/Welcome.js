@@ -16,7 +16,7 @@ export default function Welcome() {
         <li>M</li>
         <li>E</li>
         <div className={classes.scroll}>
-          <p style={{fontSize: "small"}}>scroll down to next section</p>
+          <p style={{fontSize: "small"}}>scroll down to know about me</p>
           <ExpandMoreIcon />
         </div>
       </ul>

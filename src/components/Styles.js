@@ -5,6 +5,49 @@ const drawerWidth = "13%";
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    scrollBehavior: "smooth",
+  },
+  aboutMe: {
+    position:"relative",
+    height:"50%",
+    display: "inline-flex",
+    animation: "$moveToCenter 2.5s forwards",
+  },
+  aboutMeCell: {
+    margin:"10px",
+    position:"relative",
+    boxSizing: "border-box",
+    borderStyle: "groove",
+    borderColor: "#e3f2fd",
+    borderRadius: 5,
+    padding: "10px",
+    width: "25%",
+    animation: "$fadeIn 3s forwards",
+    textAlign:"justify",
+    "&:hover": {
+      backgroundColor: "#e3f2fd",
+    },
+  },
+  avatar: {
+    position: "relative",
+    width: "25%",
+    margin:"10px",
+  },
+  avatarText: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: "100%",
+    width: "100%",
+    opacity: 0,
+    transition: ".5s ease",
+    backgroundColor: "#e3f2fd",
+    color: "#c2185b",
+    "&:hover": {
+      opacity: 1,
+    }
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -21,7 +64,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxValue: {
     margin: "5px",
-    float: "left", 
+    float: "left",
     width: "15px",
     height: "15px",
     background: "#9e9e9e",
@@ -29,7 +72,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxIdx: {
     margin: "5px",
-    float: "left", 
+    float: "left",
     width: "15px",
     height: "15px",
     background: "#5d4037",
@@ -37,7 +80,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxMin: {
     margin: "5px",
-    float: "left", 
+    float: "left",
     width: "15px",
     height: "15px",
     background: "#7b1fa2",
@@ -45,7 +88,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxLeft: {
     margin: "5px",
-    float: "left", 
+    float: "left",
     width: "15px",
     height: "15px",
     background: "#f57c00",
@@ -53,7 +96,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxRight: {
     margin: "5px",
-    float: "left", 
+    float: "left",
     width: "15px",
     height: "15px",
     background: "#0097a7",
@@ -61,7 +104,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxSwap: {
     margin: "5px",
-    float: "left", 
+    float: "left",
     width: "15px",
     height: "15px",
     background: "#c2185b",
@@ -69,7 +112,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   boxSorted: {
     margin: "5px",
-    float: "left", 
+    float: "left",
     width: "15px",
     height: "15px",
     background: "#afb42b",
@@ -79,26 +122,28 @@ export const useStyles = makeStyles((theme) => ({
     background: "#fff",
     color: "#039be5",
     fontWeight: "bold",
-    position:"relative",
-    fontSize:"0.8rem",
+    position: "relative",
+    fontSize: "0.8rem",
   },
   buttonStart: {
     background: "#fff ",
     color: "#c2185b",
     fontWeight: "bold",
-    position:"relative",
-    fontSize:"0.8rem",
+    position: "relative",
+    fontSize: "0.8rem",
   },
   contact: {
     float: "right",
     flex: 1,
   },
   container: {
-    background: "linear-gradient(to top, #c2185b, #1976d2, #fff, #fff)",
-    backgroundSize: "250% 250%",
-    animation: `$myAbout 15s infinite`,
-    fontSize: "1rem",
-    fontWeight: "bold",
+    background:
+      "linear-gradient(-45deg, #e3f2fd, #fff, #c2185b, #1976d2, #fff, #e3f2fd)",
+    backgroundSize: "400% 400%",
+    animation: `$myWelcome 10s infinite`,
+    // background: "linear-gradient(to top, #c2185b, #1976d2, #fff, #fff)",
+    // backgroundSize: "250% 250%",
+    // animation: `$myAbout 15s infinite`,
     letterSpacing: "1px",
     height: "calc(100vh - 64px)",
   },
@@ -115,7 +160,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
@@ -126,50 +170,33 @@ export const useStyles = makeStyles((theme) => ({
     height: "100vh",
   },
   formControl: {
-    width: "12%",
+    width:"10%",
     height: "10%",
-    position:"relative",
+    position: "relative",
   },
   info: {
     fontSize: "large",
     color: "#00b8d4",
   },
   imgStyle: {
-    float: "right",
+    width: "100%",
+    display: "block",
+    height: "100%",
     boxShadow:
       "8px 4px 8px 5px rgba(0, 0, 0, 0.2), 10px 6px 20px 10px rgba(0, 0, 0, 0.19)",
     borderRadius: 5,
   },
   paper: {
     flex: 1,
-    float: "bottom",
-    borderColor: "red",
     position: "relative",
-    top: "1%",
+    top:"1%",
     left: "1%",
     width: "98%",
-    height: "97%",
+    height: "98%",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     borderRadius: 10,
-    padding: "20px 50px",
-  },
-  pBorder: {
-    float: "left",
-    width: "75%",
-    boxSizing: "border-box",
-    borderStyle: "groove",
-    borderColor: "#e3f2fd",
-    borderRadius: 5,
-    padding: "2px 2px",
-  },
-  pBorder2: {
-    float: "left",
-    width: "100%",
-    boxSizing: "border-box",
-    borderStyle: "dotted",
-    borderColor: "#1976d2",
-    borderRadius: 5,
-    padding: "2px 2px",
+    padding: "15px",
+    opacity: 0.9,
   },
   paperCount: {
     position: "relative",
@@ -189,7 +216,7 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "0.7rem",
     boxShadow: "0 0 0 0 ",
     alignItems: "center",
-    padding:"2px",
+    padding: "2px",
   },
   selectedItem: {
     background: "linear-gradient(to right, #fff 95%, #c2185b 100%)",
@@ -210,6 +237,16 @@ export const useStyles = makeStyles((theme) => ({
     fontStyle: "oblique",
     fontWeight: "bold",
     marginLeft: "20px",
+  },
+  text: {
+    fontSize: "1.5rem",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    webkitTransform: "translate(-50%, -50%)",
+    msTransform: "translate(-50%, -50%)",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
   },
   visualizer: {
     padding: "10px 10px",
@@ -276,15 +313,12 @@ export const useStyles = makeStyles((theme) => ({
     from: { opacity: 0 },
     to: { opacity: 1 },
   },
-  "@keyframes myAbout": {
+  "@keyframes moveToCenter": {
     "0%": {
-      backgroundPosition: "0% 0%",
-    },
-    "50%": {
-      backgroundPosition: "100% 100%",
+      top:"0%",
     },
     "100%": {
-      backgroundPosition: "0% 0%",
+      top: "25%",
     },
   },
 }));

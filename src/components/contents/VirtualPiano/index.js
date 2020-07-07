@@ -1,4 +1,6 @@
 import React from "react";
+import { useStyles } from "../../Styles";
+import Paper from "@material-ui/core/Paper";
 import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
 import "react-piano/dist/styles.css";
 import DimensionsProvider from "./DimensionsProvider";
@@ -18,9 +20,12 @@ const keyboardShortcuts = KeyboardShortcuts.create({
   keyboardConfig: KeyboardShortcuts.HOME_ROW,
 });
 export default function VirtualPiano() {
+  const classes = useStyles();
   return (
-    <div className="mt-5">
-      <ResponsivePiano />
+    <div className={classes.container}>
+      <Paper className={classes.paper}>
+        <ResponsivePiano />
+      </Paper>
     </div>
   );
 }

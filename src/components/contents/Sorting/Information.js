@@ -5,7 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import InfoIcon from "@material-ui/icons/Info";
-import Zoom from "@material-ui/core/Zoom";
+import { Slide, Zoom } from "@material-ui/core";
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -211,13 +211,15 @@ export default function Information({ alg, ver }) {
             memory of a computing device (usually RAM) and instead they must
             reside in the slower external memory, usually a hard disk drive.
             Thus, external sorting algorithms are external memory algorithms and
-            thus applicable in the external memory model of computation. (Wikipedia)
+            thus applicable in the external memory model of computation.
+            (Wikipedia)
           </li>
         </span>
       ),
       iterative: (
         <span style={{ fontSize: "0.8rem" }}>
-          Unlike Iterative QuickSort, the iterative MergeSort doesn’t require explicit auxiliary stack. <br />
+          Unlike Iterative QuickSort, the iterative MergeSort doesn’t require
+          explicit auxiliary stack. <br />
           <span style={{ fontWeight: "bold" }}>Time Complexity:</span> O(nLogn)
           in all 3 cases (worst, average and best) as merge sort always divides
           the array into two halves and take linear time to merge two halves..{" "}
@@ -228,26 +230,30 @@ export default function Information({ alg, ver }) {
     },
   };
   return (
-    <ClickAwayListener onClickAway={handleTooltipClose}>
-      <LightTooltip
-        PopperProps={{
-          disablePortal: true,
-        }}
-        onClose={handleTooltipClose}
-        open={open}
-        disableFocusListener
-        disableHoverListener
-        disableTouchListener
-        title={description[alg][ver]}
-        classes={{ tooltip: classes.custom }}
-        placement="right"
-        TransitionComponent={Zoom}
-        arrow
-      >
-        <IconButton aria-label="information" onClick={handleTooltipOpen}>
-          <InfoIcon className={classes.info} />
-        </IconButton>
-      </LightTooltip>
-    </ClickAwayListener>
+    <Slide direction="down" in={true} mountOnEnter unmountOnExit timeout={3000}>
+      <div style={{ display: "inline-block" }}>
+        <ClickAwayListener onClickAway={handleTooltipClose}>
+          <LightTooltip
+            PopperProps={{
+              disablePortal: true,
+            }}
+            onClose={handleTooltipClose}
+            open={open}
+            disableFocusListener
+            disableHoverListener
+            disableTouchListener
+            title={description[alg][ver]}
+            classes={{ tooltip: classes.custom }}
+            placement="right"
+            TransitionComponent={Zoom}
+            arrow
+          >
+            <IconButton aria-label="information" onClick={handleTooltipOpen}>
+              <InfoIcon className={classes.info} />
+            </IconButton>
+          </LightTooltip>
+        </ClickAwayListener>
+      </div>
+    </Slide>
   );
 }

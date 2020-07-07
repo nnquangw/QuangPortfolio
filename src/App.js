@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Homepage items={items} />
+        <Homepage items={items} props={this.props} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useStyles } from "./Styles";
+import { withStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -7,31 +8,22 @@ import GithubIcon from "@material-ui/icons/GitHub";
 import { Icon } from "@iconify/react";
 import SoundcloudIcon from "@iconify/icons-mdi/soundcloud";
 import PhoneIcon from "@material-ui/icons/Phone";
-import EmailIcon from '@material-ui/icons/Email';
+import EmailIcon from "@material-ui/icons/Email";
 import Tooltip from "@material-ui/core/Tooltip";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+
+const LightTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: theme.palette.common.white,
+    color: "rgba(0, 0, 0, 0.87)",
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+    maxWidth: 500,
+    opacity: 0.9,
+  },
+}))(Tooltip);
 
 export default function Contact() {
   const classes = useStyles();
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleTooltipClose = () => {
-    setOpen(false);
-  };
-
-  const handleTooltipOpen = () => {
-    setOpen(true);
-  };
-  const [open2, setOpen2] = React.useState(false);
-
-  const handleTooltipClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleTooltipOpen2 = () => {
-    setOpen2(true);
-  };
 
   return (
     <div className={classes.contact}>
@@ -68,54 +60,23 @@ export default function Contact() {
         <GithubIcon style={{ color: "#fff" }} />
       </IconButton>
 
-      <ClickAwayListener onClickAway={handleTooltipClose}>
-        <div>
-          <Tooltip
-            PopperProps={{
-              disablePortal: true,
-            }}
-            onClose={handleTooltipClose}
-            open={open}
-            disableFocusListener
-            disableHoverListener
-            disableTouchListener
-            title={<span style={{fontSize: "1.5em"}}>+84-979-855-397</span>}
-            arrow
-          >
-            <IconButton
-              aria-label="phone"
-              className={classes.contact}
-              onClick={handleTooltipOpen}
-            >
-              <PhoneIcon style={{color: "#fff"}}/>
-            </IconButton>
-          </Tooltip>
-        </div>
-      </ClickAwayListener>
-      <ClickAwayListener onClickAway={handleTooltipClose2}>
-        <div>
-          <Tooltip
-            PopperProps={{
-              disablePortal: true,
-            }}
-            onClose={handleTooltipClose2}
-            open={open2}
-            disableFocusListener
-            disableHoverListener
-            disableTouchListener
-            title={<span style={{fontSize: "1.5em"}}>nnquang25@gmail.com</span>}
-            arrow
-          >
-            <IconButton
-              aria-label="phone"
-              className={classes.contact}
-              onClick={handleTooltipOpen2}
-            >
-              <EmailIcon style={{color: "#fff"}}/>
-            </IconButton>
-          </Tooltip>
-        </div>
-      </ClickAwayListener>
+      <LightTooltip
+        title={<span style={{ fontSize: "1em" }}>+84-979-855-397</span>}
+        arrow
+      >
+        <IconButton aria-label="phone" className={classes.contact}>
+          <PhoneIcon style={{ color: "#fff" }} />
+        </IconButton>
+      </LightTooltip>
+
+      <LightTooltip
+        title={<span style={{ fontSize: "1em" }}>nnquang25@gmail.com</span>}
+        arrow
+      >
+        <IconButton aria-label="phone" className={classes.contact}>
+          <EmailIcon style={{ color: "#fff" }} />
+        </IconButton>
+      </LightTooltip>
     </div>
   );
 }

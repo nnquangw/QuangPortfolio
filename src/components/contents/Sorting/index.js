@@ -8,8 +8,9 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
 import { Chart, BarSeries } from "@devexpress/dx-react-chart-material-ui";
+import {Animation} from "@devexpress/dx-react-chart";
 import Tooltip from "@material-ui/core/Tooltip";
-import Zoom from "@material-ui/core/Zoom";
+import { Grow, Slide, Zoom } from "@material-ui/core";
 
 import Information from "./Information";
 import Legends from "./Legends";
@@ -203,184 +204,237 @@ export default function Sorting() {
   };
   return (
     <div className={classes.container}>
-      <Paper className={classes.paper}>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="set-array-length">Set Array Length</InputLabel>
-          <Select
-            labelId="set-array-length-label"
-            id="set-array-length"
-            value={len}
-            onChange={handleChangeLen}
+      <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={2000}>
+        <Paper className={classes.paper}>
+          <Slide
+            direction="right"
+            in={true}
+            mountOnEnter
+            unmountOnExit
+            timeout={2500}
           >
-            <MenuItem value={10}>10</MenuItem>
-            <MenuItem value={30}>30</MenuItem>
-            <MenuItem value={50}>50</MenuItem>
-            <MenuItem value={100}>100</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="set-array-length">Set Algorithm</InputLabel>
-          <Select
-            labelId="set-array-length-label"
-            id="set-array-length"
-            value={alg}
-            onChange={handleChangeAlg}
+            <FormControl className={classes.formControl}>
+              <InputLabel id="set-array-length">Set Array Length</InputLabel>
+              <Select
+                labelId="set-array-length-label"
+                id="set-array-length"
+                value={len}
+                onChange={handleChangeLen}
+              >
+                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={20}>20</MenuItem>
+                <MenuItem value={40}>40</MenuItem>
+              </Select>
+            </FormControl>
+          </Slide>
+          <Slide
+            direction="right"
+            in={true}
+            mountOnEnter
+            unmountOnExit
+            timeout={2500}
           >
-            <MenuItem value={"selection"}>Selection Sort</MenuItem>
-            <MenuItem value={"bubble"}>Bubble Sort</MenuItem>
-            <MenuItem value={"quick"}>Quick Sort</MenuItem>
-            <MenuItem value={"merge"}>Merge Sort</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="set-version">Set Version</InputLabel>
-          <Select
-            labelId="set-version-label"
-            id="set-version"
-            value={ver}
-            onChange={handleChangeVer}
+            <FormControl className={classes.formControl}>
+              <InputLabel id="set-array-length">Set Algorithm</InputLabel>
+              <Select
+                labelId="set-array-length-label"
+                id="set-array-length"
+                value={alg}
+                onChange={handleChangeAlg}
+              >
+                <MenuItem value={"selection"}>Selection Sort</MenuItem>
+                <MenuItem value={"bubble"}>Bubble Sort</MenuItem>
+                <MenuItem value={"quick"}>Quick Sort</MenuItem>
+                <MenuItem value={"merge"}>Merge Sort</MenuItem>
+              </Select>
+            </FormControl>
+          </Slide>
+          <Slide
+            direction="right"
+            in={true}
+            mountOnEnter
+            unmountOnExit
+            timeout={2500}
           >
-            <MenuItem value={"original"}>Original</MenuItem>
-            {["bubble"].includes(alg) ? (
-              <MenuItem value={"optimize"}>Optimize</MenuItem>
-            ) : null}
-            {["bubble"].includes(alg) ? (
-              <MenuItem value={"recursive"}>Recursive</MenuItem>
-            ) : null}
-            {["quick", "merge"].includes(alg) ? (
-              <MenuItem value={"iterative"}>Iterative</MenuItem>
-            ) : null}
-          </Select>
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="set-order">Set Order</InputLabel>
+            <FormControl className={classes.formControl}>
+              <InputLabel id="set-version">Set Version</InputLabel>
+              <Select
+                labelId="set-version-label"
+                id="set-version"
+                value={ver}
+                onChange={handleChangeVer}
+              >
+                <MenuItem value={"original"}>Original</MenuItem>
+                {["bubble"].includes(alg) ? (
+                  <MenuItem value={"optimize"}>Optimize</MenuItem>
+                ) : null}
+                {["bubble"].includes(alg) ? (
+                  <MenuItem value={"recursive"}>Recursive</MenuItem>
+                ) : null}
+                {["quick", "merge"].includes(alg) ? (
+                  <MenuItem value={"iterative"}>Iterative</MenuItem>
+                ) : null}
+              </Select>
+            </FormControl>
+          </Slide>
+          <Slide
+            direction="right"
+            in={true}
+            mountOnEnter
+            unmountOnExit
+            timeout={2500}
+          >
+            <FormControl className={classes.formControl}>
+              <InputLabel id="set-order">Set Order</InputLabel>
 
-          <Select
-            labelId="set-order-label"
-            id="set-order"
-            value={sortCase}
-            onChange={handleChangeSortCase}
+              <Select
+                labelId="set-order-label"
+                id="set-order"
+                value={sortCase}
+                onChange={handleChangeSortCase}
+              >
+                <MenuItem value={"descendant"}>
+                  <LightTooltip
+                    title={
+                      <span style={{ fontSize: "1rem" }}>
+                        Reverse sorted array
+                      </span>
+                    }
+                    placement="right"
+                    TransitionComponent={Zoom}
+                    arrow
+                  >
+                    <div style={{ width: "100%" }}>Descending</div>
+                  </LightTooltip>
+                </MenuItem>
+                <MenuItem value={"random"}>
+                  <LightTooltip
+                    title={
+                      <span style={{ fontSize: "1rem" }}>
+                        Randomly value arrangement array
+                      </span>
+                    }
+                    placement="right"
+                    TransitionComponent={Zoom}
+                    arrow
+                  >
+                    <div style={{ width: "100%" }}>Random</div>
+                  </LightTooltip>
+                </MenuItem>
+                <MenuItem value={"ascendant"}>
+                  <LightTooltip
+                    title={
+                      <span style={{ fontSize: "1rem" }}>
+                        Already sorted array
+                      </span>
+                    }
+                    placement="right"
+                    TransitionComponent={Zoom}
+                    arrow
+                  >
+                    <div style={{ width: "100%" }}>Ascending</div>
+                  </LightTooltip>
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </Slide>
+          <Information alg={alg} ver={ver} />
+
+          <Grow in={true} mountOnEnter unmountOnExit timeout={2500}>
+            <Button
+              id="generate-array"
+              onClick={(event) => handleGenerateArray(event)}
+              className={classes.button}
+            >
+              Generate
+            </Button>
+          </Grow>
+          <Grow in={true} mountOnEnter unmountOnExit timeout={2500}>
+            <Button
+              id="start-sorting"
+              onClick={(event) => handleState(event)}
+              className={classes.buttonStart}
+            >
+              {stateText[state]}
+            </Button>
+          </Grow>
+          <Slide
+            direction="left"
+            in={true}
+            mountOnEnter
+            unmountOnExit
+            timeout={2500}
           >
-            <MenuItem value={"descendant"}>
-              <LightTooltip
-                title={
-                  <span style={{ fontSize: "1rem" }}>Reverse sorted array</span>
-                }
-                placement="right"
-                TransitionComponent={Zoom}
-                arrow
-              >
-                <div style={{ width: "100%" }}>Descending</div>
-              </LightTooltip>
-            </MenuItem>
-            <MenuItem value={"random"}>
-              <LightTooltip
-                title={
-                  <span style={{ fontSize: "1rem" }}>
-                    Randomly value arrangement array
-                  </span>
-                }
-                placement="right"
-                TransitionComponent={Zoom}
-                arrow
-              >
-                <div style={{ width: "100%" }}>Random</div>
-              </LightTooltip>
-            </MenuItem>
-            <MenuItem value={"ascendant"}>
-              <LightTooltip
-                title={
-                  <span style={{ fontSize: "1rem" }}>Already sorted array</span>
-                }
-                placement="right"
-                TransitionComponent={Zoom}
-                arrow
-              >
-                <div style={{ width: "100%" }}>Ascending</div>
-              </LightTooltip>
-            </MenuItem>
-          </Select>
-        </FormControl>
-        <Information alg={alg} ver={ver} />
-        <Button
-          id="generate-array"
-          onClick={(event) => handleGenerateArray(event)}
-          className={classes.button}
-        >
-          Generate
-        </Button>
-        <Button
-          id="start-sorting"
-          onClick={(event) => handleState(event)}
-          className={classes.buttonStart}
-        >
-          {stateText[state]}
-        </Button>
-        <Paper className={classes.paperCount}>
-          <div style={{ padding: "2px 2px" }}>
-            Comparison: {count["comparison"]}
-            <br />
-            Swap: {count["swap"]}
+            <Paper className={classes.paperCount}>
+              <div style={{ padding: "2px 2px" }}>
+                Comparison: {count["comparison"]}
+                <br />
+                Swap: {count["swap"]}
+              </div>
+            </Paper>
+          </Slide>
+
+          <Grow in={true} mountOnEnter unmountOnExit timeout={2500}>
+            <Paper className={classes.paperLegends}>
+              <Legends alg={alg} />
+            </Paper>
+          </Grow>
+          <div style={{ padding: "10px 0 0 0" }}>
+            <Chart data={data} className={classes.chart} height={470}>
+              <BarSeries
+                key="value"
+                valueField="value"
+                argumentField="index"
+                barWidth={1 - 0.001 * data.length}
+                color="#9e9e9e"
+              />
+              <BarSeries
+                key="idx"
+                valueField="idx"
+                argumentField="index"
+                barWidth={1 - 0.001 * data.length}
+                color="#5d4037"
+              />
+              <BarSeries
+                key="min"
+                valueField="min"
+                argumentField="index"
+                barWidth={1 - 0.001 * data.length}
+                color="#7b1fa2"
+              />
+              <BarSeries
+                key="left"
+                valueField="left"
+                argumentField="index"
+                barWidth={1 - 0.001 * data.length}
+                color="#f57c00"
+              />
+              <BarSeries
+                key="right"
+                valueField="right"
+                argumentField="index"
+                barWidth={1 - 0.001 * data.length}
+                color="#0097a7"
+              />
+              <BarSeries
+                key="swap"
+                valueField="swap"
+                argumentField="index"
+                barWidth={1 - 0.001 * data.length}
+                color="#c2185b"
+              />
+              <BarSeries
+                key="sorted"
+                valueField="sorted"
+                argumentField="index"
+                barWidth={1 - 0.001 * data.length}
+                color="#afb42b"
+              />
+              <Animation />
+            </Chart>
           </div>
         </Paper>
-        <Paper className={classes.paperLegends}>
-          <Legends alg={alg} />
-        </Paper>
-        <div style={{ padding: "10px 0 0 0" }}>
-          <Chart data={data} className={classes.chart} height={470}>
-            <BarSeries
-              key="value"
-              valueField="value"
-              argumentField="index"
-              barWidth={1 - 0.001 * data.length}
-              color="#9e9e9e"
-            />
-            <BarSeries
-              key="idx"
-              valueField="idx"
-              argumentField="index"
-              barWidth={1 - 0.001 * data.length}
-              color="#5d4037"
-            />
-            <BarSeries
-              key="min"
-              valueField="min"
-              argumentField="index"
-              barWidth={1 - 0.001 * data.length}
-              color="#7b1fa2"
-            />
-            <BarSeries
-              key="left"
-              valueField="left"
-              argumentField="index"
-              barWidth={1 - 0.001 * data.length}
-              color="#f57c00"
-            />
-            <BarSeries
-              key="right"
-              valueField="right"
-              argumentField="index"
-              barWidth={1 - 0.001 * data.length}
-              color="#0097a7"
-            />
-            <BarSeries
-              key="swap"
-              valueField="swap"
-              argumentField="index"
-              barWidth={1 - 0.001 * data.length}
-              color="#c2185b"
-            />
-            <BarSeries
-              key="sorted"
-              valueField="sorted"
-              argumentField="index"
-              barWidth={1 - 0.001 * data.length}
-              color="#afb42b"
-            />
-            {/* <Animation/> */}
-          </Chart>
-        </div>
-      </Paper>
+      </Slide>
     </div>
   );
 }
