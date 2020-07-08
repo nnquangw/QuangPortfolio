@@ -5,7 +5,6 @@ const drawerWidth = "13%";
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    scrollBehavior: "smooth",
   },
   aboutMe: {
     position:"relative",
@@ -173,6 +172,7 @@ export const useStyles = makeStyles((theme) => ({
     width:"10%",
     height: "10%",
     position: "relative",
+    textAlign:"center",
   },
   info: {
     fontSize: "large",
@@ -272,7 +272,7 @@ export const useStyles = makeStyles((theme) => ({
     listStyleType: "none",
     animation: `$changeColor 10s infinite`,
   },
-  scroll: {
+  welcomeText: {
     padding: "20% 0 0 0",
     animation: `$fadeIn 5s, $changeColor2 10s infinite`,
   },

@@ -230,7 +230,7 @@ export default function Information({ alg, ver }) {
     },
   };
   return (
-    <Slide direction="down" in={true} mountOnEnter unmountOnExit timeout={3000}>
+    <Slide direction="right" in={true} mountOnEnter unmountOnExit timeout={2500}>
       <div style={{ display: "inline-block" }}>
         <ClickAwayListener onClickAway={handleTooltipClose}>
           <LightTooltip

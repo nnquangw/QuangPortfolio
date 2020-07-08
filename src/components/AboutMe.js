@@ -3,15 +3,15 @@ import { useStyles } from "./Styles";
 import photo from "../images/NguyenNhatQuang-PHOTO.jpg";
 
 import Paper from "@material-ui/core/Paper";
-import Slide from "@material-ui/core/Slide";
+import { Grow } from "@material-ui/core";
 
 export default function AboutMe() {
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
-      <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={2000}>
-        <Paper className={classes.paper} elevation={3}>
+      <Grow in={true} mountOnEnter unmountOnExit timeout={1000}>
+        <Paper className={classes.paper} elevation={4}>
           <div className={classes.aboutMe}>
             <div className={classes.avatar}>
               <img className={classes.imgStyle} src={photo} alt="Quang" />
@@ -105,7 +105,7 @@ export default function AboutMe() {
             </div>
           </div>
         </Paper>
-      </Slide>
+      </Grow>
     </div>
   );
 }

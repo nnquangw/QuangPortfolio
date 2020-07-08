@@ -10,7 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import { Chart, BarSeries } from "@devexpress/dx-react-chart-material-ui";
 import {Animation} from "@devexpress/dx-react-chart";
 import Tooltip from "@material-ui/core/Tooltip";
-import { Grow, Slide, Zoom } from "@material-ui/core";
+import { Fade, Slide, Zoom } from "@material-ui/core";
 
 import Information from "./Information";
 import Legends from "./Legends";
@@ -204,7 +204,7 @@ export default function Sorting() {
   };
   return (
     <div className={classes.container}>
-      <Slide direction="up" in={true} mountOnEnter unmountOnExit timeout={2000}>
+      <Fade in={true} mountOnEnter unmountOnExit timeout={1000}>
         <Paper className={classes.paper}>
           <Slide
             direction="right"
@@ -340,7 +340,7 @@ export default function Sorting() {
           </Slide>
           <Information alg={alg} ver={ver} />
 
-          <Grow in={true} mountOnEnter unmountOnExit timeout={2500}>
+          <Slide direction="right" in={true} mountOnEnter unmountOnExit timeout={2500}>
             <Button
               id="generate-array"
               onClick={(event) => handleGenerateArray(event)}
@@ -348,8 +348,8 @@ export default function Sorting() {
             >
               Generate
             </Button>
-          </Grow>
-          <Grow in={true} mountOnEnter unmountOnExit timeout={2500}>
+          </Slide>
+          <Slide direction="right" in={true} mountOnEnter unmountOnExit timeout={2500}>
             <Button
               id="start-sorting"
               onClick={(event) => handleState(event)}
@@ -357,9 +357,9 @@ export default function Sorting() {
             >
               {stateText[state]}
             </Button>
-          </Grow>
+          </Slide>
           <Slide
-            direction="left"
+            direction="right"
             in={true}
             mountOnEnter
             unmountOnExit
@@ -373,12 +373,12 @@ export default function Sorting() {
               </div>
             </Paper>
           </Slide>
-
-          <Grow in={true} mountOnEnter unmountOnExit timeout={2500}>
+          <br/>
+          <Slide direction="right" in={true} mountOnEnter unmountOnExit timeout={2500}>
             <Paper className={classes.paperLegends}>
               <Legends alg={alg} />
             </Paper>
-          </Grow>
+          </Slide>
           <div style={{ padding: "10px 0 0 0" }}>
             <Chart data={data} className={classes.chart} height={470}>
               <BarSeries
@@ -434,7 +434,7 @@ export default function Sorting() {
             </Chart>
           </div>
         </Paper>
-      </Slide>
+      </Fade>
     </div>
   );
 }
