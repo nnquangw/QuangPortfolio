@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e2069cf76017c7b232a34a9307a2814e",
+    "revision": "3c982db90349465d81536afe97d27a6d",
     "url": "/QuangPorfolio/index.html"
   },
   {
-    "revision": "ca3a7d4d5658c1ee52ad",
+    "revision": "7525bfdbfb35e7e47538",
     "url": "/QuangPorfolio/static/css/2.1e78366a.chunk.css"
   },
   {
-    "revision": "ab50ce475ce4129c6974",
+    "revision": "a219626a155674b685bc",
     "url": "/QuangPorfolio/static/css/main.46e8b82f.chunk.css"
   },
   {
-    "revision": "ca3a7d4d5658c1ee52ad",
-    "url": "/QuangPorfolio/static/js/2.5e6bf3e0.chunk.js"
+    "revision": "7525bfdbfb35e7e47538",
+    "url": "/QuangPorfolio/static/js/2.93c76eee.chunk.js"
   },
   {
     "revision": "0b474006a00d74694d274dca100d01ef",
-    "url": "/QuangPorfolio/static/js/2.5e6bf3e0.chunk.js.LICENSE.txt"
+    "url": "/QuangPorfolio/static/js/2.93c76eee.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ab50ce475ce4129c6974",
-    "url": "/QuangPorfolio/static/js/main.20b6f694.chunk.js"
+    "revision": "a219626a155674b685bc",
+    "url": "/QuangPorfolio/static/js/main.47c715e7.chunk.js"
   },
   {
     "revision": "7ead3ee38bb57197c53b",
