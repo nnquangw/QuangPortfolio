@@ -140,9 +140,9 @@ export default function Homepage({ props, items }) {
     window !== undefined ? () => window().document.body : undefined;
   const handleMouseWheel = (event) => {
     let newIndex = selectedIndex;
-    if (event.deltaY > 0 && newIndex < Object.keys(itemFunc).length - 1) {
+    if (event.deltaY > 0 && newIndex === 0) {
       newIndex = newIndex + 1;
-    } else if (event.deltaY < 0 && newIndex > 0) {
+    } else if (event.deltaY < 0 && newIndex === 1) {
       newIndex = newIndex - 1;
     }
 

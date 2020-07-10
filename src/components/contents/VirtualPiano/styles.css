@@ -1,0 +1,19 @@
+/* PianoQuangStyle */
+
+.PianoQuangStyle .ReactPiano__Key--accidental {
+    background: linear-gradient(to bottom, #000 90%, #1976d2 100%);
+    border: 1px solid #888;
+    border-radius: 5%;
+  }
+  .PianoQuangStyle .ReactPiano__Key--natural {
+    background: linear-gradient(to bottom, #fff 95%, #c2185b 100%);
+    border: 1px solid #888;
+    border-radius: 5%;
+    margin-right: 0;
+  }
+  .PianoQuangStyle .ReactPiano__Key--active.ReactPiano__Key--accidental {
+    background: linear-gradient(to bottom, #000 50%, #1976d2 100%);
+  }
+  .PianoQuangStyle .ReactPiano__Key--active.ReactPiano__Key--natural {
+    background: linear-gradient(to bottom, #fff 70%, #c2185b 100%);
+  }

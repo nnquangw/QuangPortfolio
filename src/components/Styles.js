@@ -218,6 +218,13 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "2px",
   },
+  pianoContainer: {
+    position:"relative",
+    top:"50%",
+    width:"100%",
+    height:"35%",
+    maxHeight:"35%",
+  },
   selectedItem: {
     background: "linear-gradient(to right, #fff 95%, #c2185b 100%)",
     borderRadius: 5,
