@@ -61,12 +61,20 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     fontSize: "1rem",
   },
-  boxValue: {
+  boxChecking: {
     margin: "5px",
     float: "left",
     width: "15px",
     height: "15px",
-    background: "#9e9e9e",
+    background: "#039be5",
+    border: "1px solid rgba(0, 0, 0, .2)",
+  },
+  boxFound: {
+    margin: "5px",
+    float: "left",
+    width: "15px",
+    height: "15px",
+    background: "#1de9b6",
     border: "1px solid rgba(0, 0, 0, .2)",
   },
   boxIdx: {
@@ -93,6 +101,14 @@ export const useStyles = makeStyles((theme) => ({
     background: "#f57c00",
     border: "1px solid rgba(0, 0, 0, .2)",
   },
+  boxRest: {
+    margin: "5px",
+    float: "left",
+    width: "15px",
+    height: "15px",
+    background: "#eeeeee",
+    border: "1px solid rgba(0, 0, 0, .2)",
+  },
   boxRight: {
     margin: "5px",
     float: "left",
@@ -117,6 +133,22 @@ export const useStyles = makeStyles((theme) => ({
     background: "#afb42b",
     border: "1px solid rgba(0, 0, 0, .2)",
   },
+  boxValue: {
+    margin: "5px",
+    float: "left",
+    width: "15px",
+    height: "15px",
+    background: "#9e9e9e",
+    border: "1px solid rgba(0, 0, 0, .2)",
+  },
+  boxWrong: {
+    margin: "5px",
+    float: "left",
+    width: "15px",
+    height: "15px",
+    background: "#212121",
+    border: "1px solid rgba(0, 0, 0, .2)",
+  },
   button: {
     background: "#fff",
     color: "#039be5",
@@ -131,6 +163,7 @@ export const useStyles = makeStyles((theme) => ({
     position: "relative",
     fontSize: "0.8rem",
   },
+  
   contact: {
     float: "right",
     flex: 1,
@@ -149,6 +182,10 @@ export const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     height: "90vh",
+  },
+  characterGrid: {
+    fontSize: "3em",
+    border: "1px solid rgba(0, 0, 0, .2)",
   },
   chart: {
     background: "linear-gradient(to top, #f5f5f5, #fff, #fff)",
@@ -218,6 +255,18 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "2px",
   },
+  paperResult: {
+    position:"relative",
+    float:"bottom",
+    padding: "10px",
+    marginTop: "10px",
+    height: "20%",
+    width: "100%",
+    fontSize: "1rem",
+    borderStyle: "double",
+    borderRadius: 3,
+    borderColor: "#388e3c",
+  },
   pianoContainer: {
     position:"relative",
     top:"50%",
@@ -228,7 +277,7 @@ export const useStyles = makeStyles((theme) => ({
   selectedItem: {
     background: "linear-gradient(to right, #fff 95%, #c2185b 100%)",
     borderRadius: 5,
-    boxShadow: "0 3px 5px 3px rgba(255, 105, 135, .3)",
+    boxShadow: "0 3px 5px 3px rgba(102, 010, 251, 0.3)",
   },
   sidebarItemText: {
     color: "#1976d2",

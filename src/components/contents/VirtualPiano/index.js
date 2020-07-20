@@ -75,7 +75,7 @@ export default function VirtualPiano() {
   // Set instrument
   const handleChangeInstrument = (event) => {
     setInstrument(event.target.value);
-  }
+  };
   const handleGeneratePiano = (event) => {
     let first = MidiNumbers.fromNote(firstNote.note + firstNote.octave);
     let last = MidiNumbers.fromNote(lastNote.note + lastNote.octave);
@@ -197,7 +197,9 @@ export default function VirtualPiano() {
                     onChange={handleChangeInstrument}
                   >
                     {musyngNames.map((inst) => (
-                      <MenuItem value={inst}>{inst}</MenuItem>
+                      <MenuItem value={inst}>
+                        {capital_letter(inst)}
+                      </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -249,4 +251,16 @@ export default function VirtualPiano() {
       </Slide>
     </div>
   );
+}
+
+function capital_letter(str) {
+  
+  str = str.split("_");
+
+  for (var i = 0, x = str.length; i < x; i++) {
+    if(str[i].length >= 1)
+    str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+  }
+
+  return str.join(" ");
 }
