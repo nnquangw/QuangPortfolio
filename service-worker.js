@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/QuangPorfolio/precache-manifest.092bf23e6360d82f8b8fcf24584f960b.js"
+  "/QuangPorfolio/precache-manifest.92a7557881b46d17d0418b05da650c89.js"
 );
 
 self.addEventListener('message', (event) => {
