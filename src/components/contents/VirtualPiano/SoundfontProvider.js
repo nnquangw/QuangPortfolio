@@ -49,6 +49,7 @@ class SoundfontProvider extends React.Component {
       nameToUrl: (name, soundfont, format) => {
         return `${this.props.hostname}/${soundfont}/${name}-${format}.js`;
       },
+      gain: 3,
     }).then((instrument) => {
       this.setState({
         instrument,

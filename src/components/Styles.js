@@ -211,6 +211,9 @@ export const useStyles = makeStyles((theme) => ({
     position: "relative",
     textAlign:"center",
   },
+  formQuiz: {
+
+  },
   info: {
     fontSize: "large",
     color: "#00b8d4",
